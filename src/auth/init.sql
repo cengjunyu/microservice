@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS auth;
+USE auth;
+
+CREATE TABLE IF NOT EXSITS user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    emai VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+INSER INTO `user` (email, password) VALUES ('', '');
