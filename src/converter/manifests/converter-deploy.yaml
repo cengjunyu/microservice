@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter
+  labels:
+    app: converter
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: converter
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 8
+  template:
+    metadata:
+      labels:
+        app: converter
+    spec:
+      containers:
+      - name: converter
+        image: crpi-okc8nltdqh678ui0.cn-hangzhou.personal.cr.aliyuncs.com/cengjunyu/converter
+        envFrom:
+        - configMapRef:
+            name: converter-configmap
+        - secretRef:
+            name: converter-secret
